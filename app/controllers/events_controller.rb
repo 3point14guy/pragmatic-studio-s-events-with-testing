@@ -14,11 +14,27 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-    event_params = params.require(:event).permit(:name, :description, :location, :price, :starts_at)
     @event.update(event_params)
     # # don't want to go to an update view template so we redirect
     # redirect_to events_path(@event)
     # # rails has a shortcut for this too
     redirect_to @event
   end
+
+  def new
+    @event = Event.new
+  end
+
+  def create
+    @event = Event.new(event_params)
+    @event.save
+    redirect_to @event
+  end
+
+private
+
+  def event_params
+    params.require(:event).permit(:name, :description, :location, :price, :starts_at)
+  end
+  
 end
