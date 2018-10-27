@@ -1,5 +1,6 @@
 <article class="">
   <header>
+    <%= image_for(@event) %>
     <h2><%= @event.name %></h2>
   </header>
   <p>
@@ -17,6 +18,10 @@
     <tr>
       <th>Price:</th>
       <td><%= format_price(@event) %></td>
+    </tr>
+    <tr>
+      <th>Capacity:</th>
+      <td><%= pluralize(@event.capacity, 'spot') %></td>
     </tr>
   </table>
 </article>
