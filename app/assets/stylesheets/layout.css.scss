@@ -1,0 +1,26 @@
+@import 'colors';
+
+.page-header {
+  background-color: $primary-color;
+  color: $secondary-color;
+  padding: 5px;
+  border-bottom: 5px solid darken($primary-color, 25%);
+
+  h1 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+footer {
+  background-color: $secondary-color;
+  color: $primary-color;
+  padding: 5px;
+  border-top: 5px solid darken($secondary-color, 25%);
+}
+
+aside {
+  background-color: $secondary-color;
+  float: right;
+  width: 25vw;
+}
