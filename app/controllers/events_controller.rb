@@ -15,11 +15,14 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-    @event.update(event_params)
-    # # don't want to go to an update view template so we redirect
-    # redirect_to events_path(@event)
-    # # rails has a shortcut for this too
-    redirect_to @event
+     if @event.update(event_params)
+      # # don't want to go to an update view template so we redirect
+      # redirect_to events_path(@event)
+      # # rails has a shortcut for this too
+      redirect_to @event
+    else
+      render :edit
+    end
   end
 
   def new
@@ -28,8 +31,12 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.save
-    redirect_to @event
+    if @event.save
+      redirect_to @event
+    else
+      # render the form again with the previously entered submissions
+      render :new
+    end
   end
 
   def destroy
