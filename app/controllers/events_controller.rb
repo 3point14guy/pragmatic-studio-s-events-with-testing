@@ -19,7 +19,10 @@ class EventsController < ApplicationController
       # # don't want to go to an update view template so we redirect
       # redirect_to events_path(@event)
       # # rails has a shortcut for this too
-      redirect_to @event
+      # flash[:notice] = "Event successfully updated!"
+      # redirect_to @event
+      # # OR...
+      redirect_to @event, notice: "Event successfully updated"
     else
       render :edit
     end
