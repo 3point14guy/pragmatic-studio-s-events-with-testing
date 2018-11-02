@@ -1,4 +1,7 @@
 class Event < ApplicationRecord
+  # this tells the event model to expect an event_id column in the table wrapped by the registration model
+  # dependent: :destroy tells active record to destroy all the child objects (registrations) in the database if the event is destroyed
+  has_many :registrations, dependent: :destroy
 
   validates :name, :location, presence: true
   validates :description, length: {minimum: 25}
