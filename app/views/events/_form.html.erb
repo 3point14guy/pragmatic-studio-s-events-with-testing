@@ -1,5 +1,6 @@
 <%= form_for(@event) do |f| %>
-  <%= render 'shared/errors'%> 
+  <!-- using shared error code for the event and registration forms that has a local varialbe called object. here we are setting the value of that object variable to @event so any errors on the event form will go to the error handling code %> -->
+  <%= render 'shared/errors', object: @event %>
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :name, autofocus: true %>

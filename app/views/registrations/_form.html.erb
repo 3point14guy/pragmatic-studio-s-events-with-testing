@@ -1,0 +1,24 @@
+<%= form_for([@event, @registration]) do |f| %>
+<%= render 'shared/errors', object: @registration %>
+  <fieldset>
+    <ol>
+      <li>
+        <%= f.label :name %>
+        <%= f.text_field :name, size: 40, autofocus: true %>
+      </li>
+      <li>
+        <%= f.label :email %>
+        <%= f.email_field :email, size: 40 %>
+      </li>
+      <li>
+        <%= f.label "How did you hear about this event?" %>
+        <%= f.select :how_heard, Registration::HOW_HEARD_OPTIONS, prompt: "Pick one" %>
+      </li>
+    </ol>
+      <p>
+        <%= f.submit %>
+        <%= link_to "Cancel", events_path, class: "button" %>
+      </p>
+
+  </fieldset>
+<% end %>

@@ -7,6 +7,8 @@
     <li>
       <%= mail_to(r.email, r.name) %>
       (<%= r.how_heard %>)
+     <%#= link_to "Edit Registration", edit_event_registration_path(@event, r) %>
     </li>
+
     <% end %>
 </ol>

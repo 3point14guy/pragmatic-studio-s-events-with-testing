@@ -1,7 +1,8 @@
 <!-- while possible, this doesn't look great -->
   <!-- <%#= @event.errors.full_messages.to_sentence %> -->
   <!-- so, instead... -->
-<% if @event.errors.any? %>
+   <!-- object is a local variable set in the form that this partial will be rendered in, that way the same error handling can be used for multiple forms %> -->
+<% if object.errors.any? %>
   <section id="errors">
     <header>
       <h2>
@@ -9,11 +10,11 @@
       </h2>
       <h3>
         Please correct the following
-        <%= pluralize(@event.errors.count, "error") %>:
+        <%= pluralize(object.errors.count, "error") %>:
       </h3>
     </header>
     <ul>
-      <% @event.errors.full_messages.each do |message| %>
+      <% object.errors.full_messages.each do |message| %>
       <li><%= message %></li>
       <% end %>
     </ul>
