@@ -21,4 +21,14 @@ class Event < ApplicationRecord
   def self.upcoming
     where("starts_at >= ?", Time.now).order("starts_at")
   end
+
+  def spots_left
+    # not sure why I have access to registrations here
+    capacity - registrations.size
+  end
+
+  def sold_out?
+    # event.spots_left == 0
+    spots_left.zero?
+  end
 end

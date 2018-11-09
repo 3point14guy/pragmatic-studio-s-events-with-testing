@@ -28,7 +28,11 @@
 </article>
 
 <!-- <footer> -->
-  <%= link_to "Register", new_event_registration_path(@event) %>
+<!-- custom helper method to display 'register' or 'sold-out' -->
+  <%= register_link(@event) %>
+  <p>
+    (<%= pluralize(@event.spots_left, 'spot') %> available)
+  </p>
   <nav>
     <%= link_to "Edit", edit_event_path(@event) %> |
     <%= link_to "Delete", event_path(@event), method: :delete, data: {confirm: "Are you sure?"} %>
