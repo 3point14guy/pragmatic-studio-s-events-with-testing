@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :users
   root "events#index"
   # took generated resources for registrations and nested them in a block for events
   # this will allow us to navigate to (for example) URLs with /events/:event_id/registrations
