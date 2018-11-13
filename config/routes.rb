@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  get "signup" => 'user#new'
   resources :users
   root "events#index"
   # took generated resources for registrations and nested them in a block for events
