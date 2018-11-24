@@ -2,10 +2,17 @@
   <h1><%= link_to "Coding Calendar", root_path %></h1>
   <nav>
     <p>
-      <%#= link_to "Sign Up", new_user_path %>
-      <%# created named route so now we can use: %>
-      <%= link_to "Sign Up", signup_path %>
-      <%= link_to "Sign In", new_session_path %>
+
+
+      <% if current_user %>
+        <%= link_to current_user.name, current_user %>
+        <%#= link_to "Sign Out", signout_path %>
+      <% else %>
+        <%# link_to "Sign Up", new_user_path  %>
+        <%# created named route so now we can use: %>
+        <%= link_to "Sign Up", signup_path %>
+        <%= link_to "Sign In", new_session_path %>
+      <% end %>
     </p>
   </nav>
 </header>

@@ -6,6 +6,10 @@
   padding: 5px;
   border-bottom: 5px solid darken($primary-color, 25%);
 
+  a {
+    color: white;
+  }
+
   h1 {
     text-align: center;
     text-transform: uppercase;
