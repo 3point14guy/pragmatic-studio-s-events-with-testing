@@ -8,4 +8,10 @@ class User < ApplicationRecord
   validates :email, presence: true,
                     format: /\A\S+@\S+\z/,
                     uniqueness: { case_sensitive: false }
+  # using self bc  this is a class level method
+  def self.authenticate(email, password)
+    user = User.find_by(email: email)
+    # the authenticate below is provided by rails through calling "has_secure_password" up above
+    user && user.authenticate(password)
+  end
 end
