@@ -18,4 +18,9 @@ class SessionsController < ApplicationController
       render :new
     end
   end
+
+  def method_name
+    session[:user_id] = nil
+    redirect_to root_url, notice: "You've signed out."
+  end
 end
