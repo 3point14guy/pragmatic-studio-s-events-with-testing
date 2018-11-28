@@ -11,7 +11,8 @@ class SessionsController < ApplicationController
     if user = User.authenticate(params[:email], params[:password])
       session[:user_id] = user.id
       flash[:notice] = "Welcome back, #{user.name}!"
-      redirect_to user
+      redirect_to(session[:intended_url] || user)
+      session[:intended_url] = nil
     else
       # .now will display the flash immediately and not wait for a new page load
       flash.now[:alert] = "Invalid email/password combination."
@@ -19,7 +20,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def method_name
+  def destroy
     session[:user_id] = nil
     redirect_to root_url, notice: "You've signed out."
   end
